@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bash
+
+# Create log file
+mkdir -p /config/logs && touch /config/logs/flexget.log
+chown -R abc:abc /config/logs
+
+# Merge configs into a single file
+python3 /app/yml_merge.py '/config/flows-conf/*.yml' > /app/all_flows.yml
+echo "Compiled flexget config:"
+cat /app/all_flows.yml
