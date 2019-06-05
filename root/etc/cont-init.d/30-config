@@ -5,6 +5,6 @@ mkdir -p /config/logs && touch /config/logs/flexget.log
 chown -R abc:abc /config/logs
 
 # Merge configs into a single file
-python3 /app/yml_merge.py /app/default.yml '/config/flows-conf/*.yml' > /app/all_flows.yml
+python3 /app/yml_merge.py /app/default.yml '/config/flows-conf/*.yml' > /config/all_flows.yml
 echo "Compiled flexget config:"
-cat /app/all_flows.yml
+cat /config/all_flows.yml
