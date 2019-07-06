@@ -5,8 +5,7 @@ COPY build/qemu-arm-static /usr/bin
 ENV PYTHONIOENCODING="UTF-8"
 WORKDIR /app
 
-COPY bin/run.sh ./
-COPY requirements.lock .
+COPY bin/run.sh requirements.lock ./
 RUN pip install --no-cache-dir -r requirements.lock && \
   apk add --no-cache tzdata && \
   chmod +x run.sh
