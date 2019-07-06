@@ -1,14 +1,16 @@
-FROM lsiobase/alpine.python3.armhf:3.9
-
-ARG FLEXGET_VERSION=2.21.3
-
-ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2"
-ENV PYTHONIOENCODING="UTF-8"
+FROM python:3.7.3-alpine3.10
 
 COPY build/qemu-arm-static /usr/bin
 
-RUN pip install HiYaPyCo==0.4.14 transmissionrpc==0.11 flexget==${FLEXGET_VERSION}
-COPY root/ /
-COPY src/main/python /app
+ENV PYTHONIOENCODING="UTF-8"
+WORKDIR /app
 
-VOLUME ["/config"]
+COPY requirements.lock .
+RUN pip install --no-cache-dir -r requirements.lock && \
+  apk add --no-cache tzdata
+
+COPY bin/run.sh ./
+COPY src/main/python ./
+
+VOLUME /config
+CMD /app/run.sh

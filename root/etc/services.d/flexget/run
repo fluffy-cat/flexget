@@ -1,3 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-s6-setuidgid abc /usr/bin/flexget -c /config/all_flows.yml -l /config/logs/flexget.log daemon start

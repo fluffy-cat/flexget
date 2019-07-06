@@ -3,7 +3,7 @@ jobs:
   build:
     environment:
       IMAGE_NAMESPACE: fluffycat
-      IMAGE_NAME: ps4-waker-rest
+      IMAGE_NAME: flexget
       IMAGE_TAG: 1.0.0
     machine:
       image: circleci/classic:201808-01
